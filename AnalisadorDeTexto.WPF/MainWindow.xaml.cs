@@ -9,15 +9,28 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AnalisadorDeTexto.WPF;
+using AnalisadorDeTexto.Core;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
-public partial class MainWindow : Window
+namespace AnalisadorDeTexto.WPF
 {
-    public MainWindow()
+    public partial class MainWindow : Window
     {
-        InitializeComponent();
+        private readonly IAnalisadorTexto _analisador;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            _analisador = new Analisador();
+        }
+
+        private void Analisar_Click(object sender, RoutedEventArgs e)
+        {
+            var texto = TextoEntrada.Text;
+            var numeroPalavras = _analisador.ContarPalavras(texto);
+            var frequencia = _analisador.CalcularFrequenciaPalavras(texto);
+
+            // Por enquanto, vamos apenas exibir em uma MessageBox
+            MessageBox.Show($"Número de palavras: {numeroPalavras}");
+        }
     }
 }
