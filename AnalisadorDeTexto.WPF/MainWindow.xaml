@@ -1,12 +1,15 @@
 ﻿<Window x:Class="AnalisadorDeTexto.WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AnalisadorDeTexto.WPF"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Analisador de Texto" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
+        <TextBox x:Name="TextoEntrada" Grid.Row="0" AcceptsReturn="True" TextWrapping="Wrap" />
+
+        <Button Content="Analisar" Grid.Row="1" Margin="0,10,0,0" Click="Analisar_Click" />
     </Grid>
 </Window>
